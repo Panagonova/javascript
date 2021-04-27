@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EGN Validator</title>
+
+    <style>
+
+        .egnResult {
+            padding: 10px;
+            margin: 10px;
+        }
+        .success {
+            background-color: rgb(124, 177, 124)
+        }
+        .error {
+            background-color: rgb(206, 110, 110)
+        }
+    </style>
+
+    <script>
+        var getRegion = function(egn) {
+            var region = ~~egn.slice(6,9)
+            var result = "";
+
+            var regions = {
+                "Благоевград": 43, 
+                "Бургас": 93,
+                "Варна": 139,
+                "Велико Търново": 169,
+                "Видин": 183,
+                "Враца": 217,
+                "Габрово": 233,
+                "Кърджали": 281,
+                "Кюстендил": 301,
+                "Ловеч": 319,
+                "Монтана": 341,
+                "Пазарджик": 377,
+                "Перник": 395,
+                "Плевен": 435,
+                "Пловдив": 501,
+                "Разград": 527,
+                "Русе": 555,
+                "Силистра": 575,
+                "Сливен": 601,
+                "Смолян": 623,
+                "София - град": 721,
+                "София - окръг": 751,
+                "Стара Загора": 789,
+                "Добрич (Толбухин)": 821,
+                "Търговище": 843,
+                "Хасково": 871,
+                "Шумен": 903,
+                "Ямбол": 925,
+                "Друг/Неизвестен": 999
+            };
+            var regionsToArray = Object.keys(regions)
+
+            regionsToArray.forEach(function(regionName, index) {
+                if (region <= regions[regionName] && region >( regions[regionsToArray[index - 1]] || 0)) {
+                    result = regionName;
+                }
+            })
+
+            return result;
+        }
+
+        var monthName = function(egn) {
+            var monthIndex = egn.slice(2,4);
+            if (monthIndex > 40) {
+                monthIndex -= 40;
+            } else if (monthIndex > 20) {
+                monthIndex -= 20;
+            } 
+
+            let months =["януари","февруари","март","април","май","юни","юли","август","септември","октомври","ноември","декември"];
+            return months[monthIndex -1];
+        } 
+
+        var getYear = function(egn) {
+            var monthIndex = egn.slice(2,4);
+            var year = ~~egn.slice(0,2);
+
+            if (monthIndex > 40) {
+                year += 2000;
+            } else if (monthIndex > 20) {
+                year += 1800;
+            }
+            else {
+                year += 1900;
+            }
+
+            return year;
+        }
+
+        var egnValidate = function() {
+            var input = document.getElementById("egn")
+            var outputContainer = document.getElementById("egnResult");
+
+            var egn = input.value;
+
+            if (checkEGN(egn)) {
+                var gender = ~~egn[8] % 2 === 0 ? "мъж" : "жена";
+
+                
+                outputContainer.innerHTML = `Информация за ЕГН: ${egn} е ЕГН на ${gender}, роден на ${egn[4]}${egn[5]} ${monthName(egn)} ${getYear(egn)} г. в регион ${getRegion(egn)}.`
+                outputContainer.classList.add("success");
+                outputContainer.classList.remove("error")
+            }
+            else {
+                outputContainer.innerHTML = `<b><i>Информация за ЕГН:</i> ${egn}</b> невалиден ЕГН`
+                outputContainer.classList.add("error");
+                outputContainer.classList.remove("success")
+            }
+
+            input.value = "";
+        }    
+
+        var checkEGN = function(egn) {
+            if(!/\d{10}/.test(egn))
+                return false
+               
+            var checksum = 0;
+            var weights = [2,4,8,5,10,9,7,3,6];
+            for(var i = 0; i <9; i++) {
+                checksum += (~~egn[i]) * weights[i];
+            }
+
+            checksum %= 11;
+            if (checksum === 10)
+                checksum = 0;
+
+            return checksum === ~~egn[9];
+        }
+    </script>
+</head>
+<body>
+    <div> 
+        <input type="text" id="egn" placeholder="Въведете ЕГН"/>
+        <button id="egnValidator" onclick="egnValidate()">Валидирай</button>
+        <div id="egnResult" class="egnResult"></div>  
+    </div>
+
+</body>
+</html>

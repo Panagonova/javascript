@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="bg">
+  <head>
+      <title>Регистрационна форма</title>      
+  </head>
+  <body>
+      <form>
+          <table>
+              <tr>
+                  <th colspan="2">
+                      Регистрационна форма
+                  </th>
+              </tr>
+              <tr>
+                  <td>
+                      <label for="uname">
+                          Потребителско име:
+                      </label>
+                  </td>
+                  <td>
+                      <input type="text" id="uname" name="uname">
+                  </td>
+              </tr>
+                <tr>
+                  <td>
+                      <label for="email">
+                          E-mail:
+                      </label>
+                  </td>
+                  <td>
+                      <input type="email" id="email" name="email">
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label for="pass">
+                          Парола:
+                      </label>
+                  </td>
+                  <td>
+                      <input type="password" id="pass" class="greenb" name="pass">
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label for="birthdate">
+                          Дата на раждане:
+                      </label>
+                  </td>
+                  <td>
+                      <input type="date" id="birthdate" class="greenb" name="bdate">
+                  </td>
+              </tr>
+               <tr>
+                  <td>
+                      <label for="age">
+                          Възраст:
+                      </label>
+                  </td>
+                  <td>
+                      <input type="number" id="age" name="age">
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label>
+                          Пол:
+                      </label>
+                  </td>
+                  <td>
+                      <input type="radio" id="male" name="gender" value="male">
+                      <label for="male">Мъж</label>
+                      <input type="radio" id="female" name="gender" value="female">
+                      <label for="female">Жена</label>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label>
+                          Семейно положение:
+                      </label>
+                  </td>
+                  <td>
+                      <ul style="list-style: none;">
+                      <li>
+                          <input type="radio" id="free" name="status" value="free">
+                          <label for="free">Необвързан</label>
+                      </li>
+                      <li>
+                          <input type="radio" id="marriage" name="status" value="marriage">
+                          <label for="marriage">Обвързан</label>
+                      </li>
+                      <li>
+                          <input type="radio" id="complex" name="status" value="complex">
+                          <label for="complex">Сложно е</label>
+                      </li>
+                      </ul>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label>
+                          Домашни любимци:
+                      </label>
+                  </td>
+                  <td>
+                       <ul style="list-style: none;">
+                      <li>
+                          <input type="checkbox" id="cat" name="cat">
+                          <label for="cat">Котка</label>
+                      </li>
+                      <li>
+                          <input type="checkbox" id="dog" name="dog">
+                          <label for="dog">Куче</label>
+                      </li>
+                      <li>
+                          <input type="checkbox" id="hamster" name="hamster">
+                          <label for="hamster">Хамстер</label>
+                      </li>
+                      <li>
+                          <input type="checkbox" id="other" name="other">
+                          <label for="other">Други</label>
+                      </li>
+                      </ul>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label for="region">
+                          Област:
+                      </label>
+                  </td>
+                  <td>
+                      <select id="region" name="region">
+                          <option value="CA">София-град</option>
+                          <option value="CO">Софийска област</option>
+                          <option value="B">Област Варна</option>
+                          <option value="Y">Област Ямбол</option>
+                      </select>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label for="car">
+                          Автомобил:
+                      </label>
+                  </td>
+                  <td>
+                      <select id="car" name="car">
+                          <option disabled selected value>&nbsp;</option>
+                          <optgroup label="Немски автомобили">
+                              <option value="mercedes">Mercedes</option>
+                              <option value="vw">VW</option>
+                              <option value="opel">Opel</option>
+                              <option value="bmw">BMW</option>
+                          </optgroup>
+                          <optgroup label="Японски автомобили">
+                              <option value="nissan">Nissan</option>
+                              <option value="vw">Toyota</option>
+                              <option value="mitzubishi">Mitzubishi</option>
+                              <option value="suziki">Suzuki</option>
+                          </optgroup>
+                          <optgroup label="Френски автомобили">
+                              <option value="renault">Renault</option>
+                              <option value="peugeot">Peugeot</option>
+                              <option value="citroen">Citroen</option>
+                          </optgroup>
+                      </select>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label for="favcolor">
+                          Любим цвят:
+                      </label>
+                  </td>
+                  <td>
+                      <input type="color" id="favcolor" name="color">
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label for="cv">
+                          CV:
+                      </label>
+                  </td>
+                  <td>
+                      <input type="file" id="cv" name="cv">
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label for="worktime">
+                          Начaло на работен ден:
+                      </label>
+                  </td>
+                  <td>
+                      <input type="time" id="worktime" name="worktime">
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label for="mark">
+                          Успех в училище:
+                      </label>
+                  </td>
+                  <td>
+                      <input type="range" id="mark" min="2" max="6" name="mark">
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label for="comment">
+                         Коментар:
+                      </label>
+                  </td>
+                  <td>
+                      <textarea name="comment" id="comment" rows="6" cols="30" style="resize: none;"></textarea>
+                  </td>
+              </tr>
+              <tr>
+                  <th colspan="2">
+                      <input type="submit" name="register" value="Регистрирай се">
+                      <button>Reset</button>
+                  </th>
+              </tr>
+          </table>
+      </form>
+  </body>
+</html>
